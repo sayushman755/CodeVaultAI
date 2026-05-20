@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from database import check_database_connection
+from database import check_database_connection, get_database_error
 from routes.auth_routes import router as auth_router
 from routes.problem_routes import router as problem_router
 from routes.statement_routes import router as statement_router
@@ -44,5 +44,6 @@ def health_check():
 
     return {
         "api_status": "healthy",
-        "database_connected": db_status
+        "database_connected": db_status,
+        "database_error": get_database_error()
     }

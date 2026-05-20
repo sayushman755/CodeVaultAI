@@ -23,5 +23,13 @@ def check_database_connection():
         client.admin.command("ping")
         return True
     except Exception as e:
-        print("MongoDB connection error:", e)
+        print("MongoDB connection error:", str(e))
         return False
+
+
+def get_database_error():
+    try:
+        client.admin.command("ping")
+        return None
+    except Exception as e:
+        return str(e)
